@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Tareas</title>
+</head>
+<body>
+    <h1>Lista de Tareas</h1>
+    <ul>
+        {% for task in tasks %}
+        <li>{{ task }}</li>
+        {% endfor %}
+    </ul>
+    <form method="POST" action="/add_task">
+        <input type="text" name="task" placeholder="Agregar tarea" required>
+        <button type="submit">Agregar</button>
+    </form>
+</body>
+</html>
