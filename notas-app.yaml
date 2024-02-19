@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: notas-app
+spec:
+  ports:
+  - port: 80
+    targetPort: 5000
+  selector:
+    app: notas-app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notas-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notas-app
+  template:
+    metadata:
+      labels:
+        app: notas-app
+    spec:
+      containers:
+      - name: notas-app
+        image: notas-app:latest
+        ports:
+        - containerPort: 5000
